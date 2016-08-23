@@ -17,6 +17,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise', '~> 4.2.0'
 
+gem 'twitter-bootstrap-rails'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
