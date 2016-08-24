@@ -1,0 +1,39 @@
+<h1>Offers</h1>
+
+<%= link_to "Create new offer", "#new_offer", class: "btn btn-default", data: {toggle: "modal"} %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Description</th>
+      <th>Seller</th>
+      <th>Price</th>
+      <th>State</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <% @offers.each do |offer| %>
+    <tr>
+      <td><%= offer.id %></td>
+      <td><%= offer.text %></td>
+      <td><%= offer.seller.email %></td>
+      <td><%= number_to_currency(offer.price) %></td>
+      <td>
+        <% if offer.buyer.present? %>
+          Bought by <%= offer.buyer.email %>
+        <% elsif offer.seller == current_user %>
+          Offered by you
+        <% else %>
+          Available
+        <% end %>
+      </td>
+      <td>
+        <% if offer.user_can_buy?(current_user) %>
+          <%= link_to "Buy", offer_buy_path(offer), method: :patch %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

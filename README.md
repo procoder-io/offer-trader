@@ -1,7 +1,8 @@
 # Offer Trader
-This is practical project of lesson [http://procoder.io/lessons/ruby-on-rails-transactions] that describes Ruby on Rails transaction management.  
+This is practical project of lesson [http://procoder.io/lessons/ruby-on-rails-transactions] for practice Ruby on Rails transaction management.  
+The idea of that application for making deals between sellers and buyers. Our main goal here is to implement bootstrapped methods in the right way.
 
-This is application for making deals between sellers and buyers. Our main goal here is to implement bootstrapped methods in the right way.
+Disclaimer: in that application we're focused mostly on transactions and for simplicity reasons just skips some best practices not related to that topic.
 
 ## Prerequisites
 * Ruby 2.2.x or greater
@@ -16,3 +17,7 @@ cd offer_trader
 ./bin/setup
 ```
 
+## Main models
+* User
+* Payment - used for increasing `User` balance
+* Offer - offer is some service that suggested by seller and accepted by buyer. If buyer accepts offer, then user balance decreased on the `price` of offer.

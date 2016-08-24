@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  root 'pages#home'
+  root 'offers#index'
+
+  resources :payments
+  resources :offers do
+    patch :buy
+  end
 
   devise_for :users
 
