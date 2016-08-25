@@ -19,9 +19,9 @@ cd offer-trader
 ```
 
 ## Main models
-* User
-* Payment - new payments are increasing `User` balance
-* Offer - if buyer accepts offer, then buyer's balance decreased and seller balance increased by `price`.
+* `User`
+* `Payment` - new payments are increasing `User` balance
+* `Offer` - if buyer accepts offer, then buyer's balance decreased and seller balance increased by `price`.
 
 ## Tasks
 Project is bootstrapped with few users and offers. Their credentials is provided on main page. You need to login as any of those user to test actions in UI. You can create offers and payments from UI or from console.
