@@ -13,8 +13,8 @@ Disclaimer: in that application we're focused mostly on transactions and for sim
 ## Installation
 Clone project and make bundle install
 ```
-git clone ...
-cd offer_trader
+git clone git@github.com:procoder-io/offer-trader.git
+cd offer-trader
 ./bin/setup
 ```
 
