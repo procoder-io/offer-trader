@@ -27,8 +27,6 @@
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
               <li><a><b><%= current_user.email %></b></a></li>
-              <li><a>Account balance: <%= number_to_currency(current_user.balance) %></a></li>
-              <li><%= link_to "Add funds", "#new_payment", class: "btn btn-default", data: {toggle: "modal"} %></li>
               <li><%= link_to "Sign out", sign_out_path, method: :delete  %></li>
             <% else %>
               <li><%= link_to "Sign up", sign_up_path  %></li>
@@ -50,7 +48,11 @@
         </div>
         <div class="col-lg-3">
           <div class="well sidebar-nav">
-            <h3>Payments</h3>
+            <h3 style="margin-top: 0">Payments</h3>
+            <p>
+              Balance: <%= number_to_currency(current_user.balance) %>
+            </p>
+            <%= link_to "Add funds", "#new_payment", class: "btn btn-default", data: {toggle: "modal"} %>
             <ul>
               <% current_user.payments.order("created_at desc").each do |payment| %>
                 <li><%= number_to_currency(payment.amount) %></li>
@@ -66,16 +68,34 @@
     <div id="new_offer" class="modal fade" aria-hidden="true" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Create new offer</h4>
-          </div>
-          <div class="modal-body">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+          <%= form_for Offer.new, class: 'form-horizontal' do |f| %>
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Create new offer</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">
+                  Offer description
+                </label>
+                <div class="col-sm-10">
+                  <%= f.text_area :text, required: true, class: "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">
+                  Price
+                </label>
+                <div class="col-sm-10">
+                  <%= f.text_field :price, required: true, class: "form-control" %>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <%= f.submit "Save changes", class: "btn btn-primary" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

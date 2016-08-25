@@ -10,13 +10,17 @@ class OffersController < ApplicationController
     @offer.buyer = current_user
     @offer.save!
 
-    redirect_to root_path
+    redirect_to offers_path
   end
 
   def create
-    @offer = Offer.new(params[:offer])
+    @offer = current_user.offers_as_seller.new(offer_params)
     @offer.save!
 
     redirect_to offers_path
+  end
+
+  def offer_params
+    params.required(:offer).permit(:text, :price)
   end
 end
