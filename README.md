@@ -1,6 +1,7 @@
 # Offer Trader
-This is practical project of lesson [http://procoder.io/lessons/ruby-on-rails-transactions] for practice Ruby on Rails transaction management.  
-The idea of that application for making deals between sellers and buyers. Our main goal here is to implement bootstrapped methods in the right way.
+That project is practical part of lesson "Ruby on Rails Transactions" http://procoder.io/lessons/ruby-on-rails-transactions. In that project you'll learn transaction management basics in Ruby on Rails.  
+
+This application is marketplace for making deals between sellers and buyers. It contains bootstrapped project with main things implemented. Your task described below.
 
 Disclaimer: in that application we're focused mostly on transactions and for simplicity reasons just skips some best practices not related to that topic.
 
@@ -19,5 +20,14 @@ cd offer_trader
 
 ## Main models
 * User
-* Payment - used for increasing `User` balance
-* Offer - offer is some service that suggested by seller and accepted by buyer. If buyer accepts offer, then user balance decreased on the `price` of offer.
+* Payment - new payments are increasing `User` balance
+* Offer - if buyer accepts offer, then buyer's balance decreased and seller balance increased by `price`.
+
+## Tasks
+Project is bootstrapped with few users and offers. Their credentials is provided on main page. You need to login as any of those user to test actions in UI. You can create offers and payments from UI or from console.
+
+*Task #1* Implement code that increments user balance when `Payment` is created. Add it as callback.
+
+*Task #2* Implement money transfer between `Offer` seller and buyer when it purchased. Add it inside `OfferCreator#create!`. Note that logic is extracted from model to service object.
+
+*Task #3* Add logging about created payments and offers. Write to `Rails.logger.info` basic information about created objects. Choose right place and log only really created objects.

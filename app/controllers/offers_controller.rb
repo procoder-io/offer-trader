@@ -15,7 +15,7 @@ class OffersController < ApplicationController
 
   def create
     @offer = current_user.offers_as_seller.new(offer_params)
-    @offer.save!
+    OfferCreator.new(@offer).create!
 
     redirect_to offers_path
   end
