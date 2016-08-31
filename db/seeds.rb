@@ -1,7 +1,7 @@
 ActiveRecord::Base.transaction do
-  john = User.create!(email: "john@gmail.com", password: "123123123", password_confirmation: "123123123")
-  dave = User.create!(email: "dave@gmail.com", password: "123123123", password_confirmation: "123123123")
-  chris = User.create!(email: "chris@gmail.com", password: "123123123", password_confirmation: "123123123")
+  john = User.create!(email: "john@procoder.io", password: "123123123", password_confirmation: "123123123")
+  dave = User.create!(email: "dave@procoder.io", password: "123123123", password_confirmation: "123123123")
+  chris = User.create!(email: "chris@procoder.io", password: "123123123", password_confirmation: "123123123")
 
   Offer.create!(seller: john, text: "iPhone 5 16GB", price: 150)
   Offer.create!(seller: john, text: "Samsung Galaxy S", price: 300)
